@@ -10,8 +10,8 @@ Bash was created by Brian Fox for the GNU Projecy in 1989, as a free software re
 Bash is a command processor that typically runs in a text window where the user types commands that cause actions. Bash can also read and execute commands from a file, called a shell script.\
 ### Getting started
 #### Installation on Windows
-First, install Linux on Windows with WSL [here](https://learn.microsoft.com/en-us/windows/wsl/install) \
-You can write Bash scripts in any text editor you want. To utilize a text editor I am familiar with, I plan to use [Visual Studio Code](https://code.visualstudio.com/). \
+First, install Linux on Windows with WSL [here](https://learn.microsoft.com/en-us/windows/wsl/install)\
+You can write Bash scripts in any text editor you want. To utilize a text editor I am familiar with, I plan to use [Visual Studio Code](https://code.visualstudio.com/).\
 
 #### "Hello World" program
 1. Create a new file using a text editor like vi/vim or nano
