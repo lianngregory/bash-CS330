@@ -1,9 +1,7 @@
 
 ## Language overview and setup
-**Bash is a Unix shell and command language
+**Bash is a Unix shell and command language**
 
- is an interpreted, high-level, general-purpose programming language**
- 
 ### History
 
 Bash was created by Brian Fox for the GNU Projecy in 1989, as a free software replacement for the Bourne shell. The shell's name is an acronym for Bourne Again Shell, a pun on the name of the Bourne shell that it replaces and the notion of being "born again". It has been used as the default login shell for most Linux distributions and is also available for Windows 10 and 11, using the Windows Subsystem for Linux.\
