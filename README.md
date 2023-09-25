@@ -57,11 +57,13 @@ echo "Hello World!"
 
 ### Naming
 
-**Some Rules for Bash Variable Naming Conventions**
+**Some Rules for Bash Variable Naming**
 
 - Community standard for all variable naming is [snake_case](https://en.wikipedia.org/wiki/Snake_case).
 
 - The first character of a variable name cannot be a number
+
+- Variable name cannot have whitespace in between
 
 - Variable names cannot be reserved words
 
@@ -83,9 +85,7 @@ break
 function
 ```
 
-- Variable name cannot have whitespace in between
-
-**Variable Names:** Lower-case alphanumeric characters, numbers, and underscores
+**Local Variable Names:** Lower-case alphanumeric characters, numbers, and underscores
 
 eg: `my_variable`
 
@@ -93,6 +93,12 @@ eg: `my_variable`
 
 eg: `MY_CONSTANT_VARIABLE` or `MY_ENVIORMENT_VARIABLE`
 
+**Bash can be considered untyped as everything is a string, which means there isn't any type conversions, implicit or explicit.**
+
 ### Types
+
+Bash has no data types, which would make it an "untyped" language. Variables can contain only numbers or a string of one or more characters. Bash variables are character strings, but depending on context, Bash permits arithmetic operations and comparisons on variables. The determining factor is whether the value of a variable contains only digits.
+
+There are three kinds of variables you can create: local variables, environment variables and variables as positional parameters.
 
 ### Bindings
