@@ -132,3 +132,94 @@ y=10
 result=$(( x + y))
 echo $result # 10
 ```
+
+## Arrays
+
+Arrays in bash are variables that allow you to refer to multiple values. In bash, arrays are also zero-based, where the first element in an array has index 0.
+
+When dealing with arrays, we should be aware of the special environment variable IFS. IFS, or Input Field Separator, is the character that separates elements in an array. The default value is an empty space IFS=' '.
+
+You can create an array by assigning a value to an index in the array variable
+
+```
+dogs[0]=pitbull
+dogs[1]=poodle
+dogs[2]=huskie
+```
+
+Array variables can also be created using compound assignments
+
+```
+dogs=(pitbull poodle huskie)
+```
+
+### Using Arrays in Bash
+
+```
+echo "${dogs[0]}"           # Element #0
+echo "${dogs[-1]}"          # Last element
+echo "${dogs[@]}"           # All elements, space-separated
+echo "${#dogs[@]}"          # Number of elements
+echo "${#dogs}"             # String length of the 1st element
+echo "${#dogs[3]}"          # String length of the Nth element
+echo "${dogs[@]:3:2}"       # Range (from position 3, length 2)
+echo "${!dogs[@]}"          # Keys of all elements, space-separated
+```
+
+### Array Operations
+
+```
+dogs=("${dogs[@]}" "goldendoodle")    # Push
+dogs+=('goldendoodle')                # Also Push
+unset dogs[2]                         # Remove one item
+```
+
+### Iterating Arrays
+
+```
+for d in "${dogs[@]}"; do   # loop over items in "dogs" array
+  echo "$d"
+done
+```
+
+
+## Dictionaries
+
+Dictionaries, also known as hash tables and hash maps, defines an unordered collection of data as a set of key-value pair.
+
+You can create an array by assigning a value to an index in the array variable
+
+```
+declare -A fruits
+
+fruits[apple]="red"
+fruits[orange]="orange"
+fruits[pineapple]="yellow"
+fruits[blueberry]="blue"
+```
+
+### Using Dictionaries in Bash
+
+```
+echo "${fruits[apple]}" # display value for key "apple"
+echo "${fruits[@]}"     # All values
+echo "${!fruits[@]}"    # All keys
+echo "${#fruits[@]}"    # Number of elements
+unset fruits[apple]     # Delete key "apple"
+```
+
+### Iterating Arrays
+
+Loop over values
+```
+for value in "${fruits[@]}"; do  # loop over values in "fruits"
+  echo "$value"
+done
+```
+
+Loop over keys
+```
+for key in "${!fruits[@]}"; do  # loop over keys in "fruits"
+  echo "$key"
+done
+```
