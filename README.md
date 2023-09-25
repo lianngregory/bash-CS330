@@ -56,11 +56,40 @@ echo "Hello World!"
 ## Names, Types, and Bindings
 
 ### Naming
-**Variable Names:** Lower-case, with underscores to separate words. 
+
+**Some Rules for Bash Variable Naming Conventions**
+
+- Community standard for all variable naming is [snake_case](https://en.wikipedia.org/wiki/Snake_case).
+
+- The first character of a variable name cannot be a number
+
+- Variable names cannot be reserved words
+
+Reserved Words
+```
+if
+elif
+else
+then
+while
+do
+done
+for
+until
+case
+esac
+continue 
+break
+function
+```
+
+- Variable name cannot have whitespace in between
+
+**Variable Names:** Lower-case alphanumeric characters, numbers, and underscores
 
 eg: `my_variable`
 
-**Constants and Environment Variable Names:** All caps, separated with underscores, declared at the top of the file. 
+**Constants and Environment Variable Names:** All capital alphanumeric characters, numbers, and underscores, declared at the top of the file. 
 
 eg: `MY_CONSTANT_VARIABLE` or `MY_ENVIORMENT_VARIABLE`
 
