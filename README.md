@@ -22,7 +22,7 @@ If you're using a UNIX based machine, Bash will most likely be preinstalled and 
 #### Windows
 Install Linux on Windows with WSL [here](https://learn.microsoft.com/en-us/windows/wsl/install) 
 
-#### "Hello World" program
+### "Hello World" program
 You can write Bash scripts in any text editor you want. To utilize a text editor I am familiar with, I plan to use [Visual Studio Code](https://code.visualstudio.com/). 
 1. Create a new file using a text editor like vi/vim or nano
 ```
@@ -42,7 +42,7 @@ echo "Hello World!"
 Hello World!
 ```
 
-#### Writing comments in Bash scripts
+### Writing comments in Bash scripts
 To write comments in Bash scripts, use a "#" at the beginning of your comment. 
 ```
 #!/bin/bash
@@ -51,3 +51,19 @@ To write comments in Bash scripts, use a "#" at the beginning of your comment.
 # print Hello World! as output
 echo "Hello World!"
 ```
+
+
+## Names, Types, and Bindings
+
+### Naming
+**Variable Names:** Lower-case, with underscores to separate words. 
+
+eg: `my_variable`
+
+**Constants and Environment Variable Names:** All caps, separated with underscores, declared at the top of the file. 
+
+eg: `MY_CONSTANT_VARIABLE` or `MY_ENVIORMENT_VARIABLE`
+
+### Types
+
+### Bindings
