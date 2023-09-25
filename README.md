@@ -85,20 +85,34 @@ break
 function
 ```
 
-**Local Variable Names:** Lower-case alphanumeric characters, numbers, and underscores
+**Local Variable** exist only within a single script. They are inaccessible to other programs and scripts. A local variable can be declared using `=` sign and can be retrieved using the $ sign.
 
-eg: `my_variable`
+Recommended naming conventions are lower-case alphanumeric characters, numbers, and underscores
 
-**Constants and Environment Variable Names:** All capital alphanumeric characters, numbers, and underscores, declared at the top of the file. 
+```
+my_variable="test"         # declare variable
+echo $my_variable          # display value
+unset my_variable          # delete variable
+```
 
-eg: `MY_CONSTANT_VARIABLE` or `MY_ENVIORMENT_VARIABLE`
+**Environment Variables** are accessible to any program or script running in current shell session. They are created just like local variables, but using the keyword export instead.
 
-**Bash can be considered untyped as everything is a string, which means there isn't any type conversions, implicit or explicit.**
+Recommended naming conventions are all capital alphanumeric characters, numbers, and underscores, declared at the top of the file. 
+
+```
+export MY_ENVIORMENT_VARIABLE="This is an enviorment variable!"
+```
+
+Here's a few common enviorment variables that you may come across in bash!
+
+| Variable       | Description                       |
+| -------------- | --------------------------------- |
+| `$HOME`        | User's home directory             |
+| `$PWD`         | User's current working directory  |
+| `$HOSTNAME`    | Device’s hostname on the network  |
 
 ### Types
 
-Bash has no data types, which would make it an "untyped" language. Variables can contain only numbers or a string of one or more characters. Bash variables are character strings, but depending on context, Bash permits arithmetic operations and comparisons on variables. The determining factor is whether the value of a variable contains only digits.
-
-There are three kinds of variables you can create: local variables, environment variables and variables as positional parameters.
+Bash has no data types, which would make it an "untyped" language. This means that there isn't any type conversions, implicit or explicit. Variables can contain only numbers or a string of one or more characters. Bash variables are character strings, but depending on context, Bash permits arithmetic operations and comparisons on variables. The determining factor is whether the value of a variable contains only digits.
 
 ### Bindings
