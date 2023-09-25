@@ -53,7 +53,7 @@ echo "Hello World!"
 ```
 
 
-## Names, Types, and Bindings
+## Names and Data Types
 
 ### Naming
 
@@ -115,4 +115,20 @@ Here's a few common enviorment variables that you may come across in bash!
 
 Bash has no data types, which would make it an "untyped" language. This means that there isn't any type conversions, implicit or explicit. Variables can contain only numbers or a string of one or more characters. Bash variables are character strings, but depending on context, Bash permits arithmetic operations and comparisons on variables. The determining factor is whether the value of a variable contains only digits.
 
-### Bindings
+
+## Arithmetic
+
+In bash we are free to do any arithmetical operations. But the expression must enclosed by `$(( ))`
+
+```
+echo $(( 10 + 2 )) # 12
+```
+
+In arithmetic expansions, variables should generally be used without a $ prefix:
+
+```
+x=5
+y=10
+result=$(( x + y))
+echo $result # 10
+```
