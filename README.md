@@ -221,3 +221,103 @@ for key in "${!fruits[@]}"; do  # loop over keys in "fruits"
   echo "$key"
 done
 ```
+
+
+## Functions
+
+In Bash, functions are a chunk of code that can be called numerous times. The purpose of a function is to help you make your bash scriptsaid making your code more readable and to avoid repeated code.
+
+You can define functions in two ways.
+
+The first way starts with the function name, followed by parentheses. This is the more commonly found format.
+```
+function_name () {
+  code
+}
+
+function_name     # call the function
+```
+
+The second way starts with the reserved word function, followed by the function name.
+```
+function function_name {
+  code
+}
+
+function_name     # call the function
+```
+
+**Arguments and Parameters:** When a function is called, the parameters are pushed onto the stack. These values are then accessible within the function as local variables. They are stored directly on the stack, not as references to heap memory.
+
+**Local Variables:** Local variables declared within a Bash function are also stored on the stack. Bash allocates stack space for these variables when the function is called and deallocates it when the function returns. The values of local variables are stored directly on the stack, and their memory is automatically released when the function exits.
+
+### Function Example: Pass-by Reference
+```
+#!/bin/bash
+
+swap () {
+    temp="$x"
+    x="$y"
+    y="$temp"
+}
+
+# Define vars
+x=5
+y=7
+
+echo "The value of x before swapping: $x"
+echo "The value of y before swapping: $y"
+
+swap
+echo "The value of x after swapping: $x"
+echo "The value of y after swapping: $y"
+```
+
+### Function Example: Multiplying Two Numbers
+```
+#!/bin/bash
+
+multiply () {
+  ans=$(($1 * $2))             # multiply the two inputted values
+  echo $ans                    # "return" ans
+}
+
+result=$(multiply 2 5)         # call function nd store result in variable
+echo "The sum is: $result"     # print result
+```
+
+### Function Example: Recursion
+```
+#!/bin/bash
+
+factorial () {
+    if (( $1 <= 1 )); then
+        echo 1
+    else
+        last=$(factorial $(( $1 - 1 )))
+        echo $(( $1 * last ))
+    fi
+}
+
+factorial 5    # expected output: 120
+```
+
+### Function Example: Split a String
+```
+#!/bin/bash
+
+split_string () {
+    input_string="$1"       # Input string passed as first argument
+    delimiter=" "           # Set space as the delimiter
+
+    # Use IFS (Internal Field Separator) to split the string
+    IFS="$delimiter" read -r string1 string2 <<< "$input_string"
+
+    # Return both split strings
+    echo "$string1"
+    echo "$string2"
+}
+
+input="Hello World"
+split_string "$input"       # expected output: Hello\nWorld
+```
