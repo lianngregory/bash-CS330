@@ -115,6 +115,45 @@ Here's a few common enviorment variables that you may come across in bash!
 
 Bash has no data types, which would make it an "untyped" language. This means that there isn't any type conversions, implicit or explicit. Variables can contain only numbers or a string of one or more characters. Bash variables are character strings, but depending on context, Bash permits arithmetic operations and comparisons on variables. The determining factor is whether the value of a variable contains only digits.
 
+## Operators
+Arithmetic Operators:
+- + (Addition)
+- - (Subtraction)
+- * (Multiplication)
+- / (Division)
+- % (Modulo)
+
+Comparison Operators:
+- -eq (Equal)
+- -ne (Not Equal)
+- -lt (Less Than)
+- -le (Less Than or Equal To)
+- -gt (Greater Than)
+- -ge (Greater Than or Equal To)
+
+Logical Operators:
+- ! (Negation)
+- a (Logical AND)
+- o (Logical OR)
+
+String Operators:
+- = (Equal)
+- != (Not Equal)
+
+File Test Operators:
+- -e (File exists)
+- -f (Is a regular file)
+- -d (Is a directory)
+- -r (Is readable)
+- -w (Is writable)
+- -x (Is executable)
+
+Assignment Operator:
+- = (Assignment)
+
+Compound Assignment Operators:
+- += (Append to a variable)
+- -= (Remove from a variable)
 
 ## Arithmetic
 
@@ -320,4 +359,99 @@ split_string () {
 
 input="Hello World"
 split_string "$input"       # expected output: Hello\nWorld
+```
+
+## Booleans
+
+Bash does not support boolean values, although any bash variable can be 0 or "true" and 1 or "false".
+
+## Conditional Statements
+
+Bash has 4 types of conditional statements:
+1. if statement
+2. if-else statement
+3. if..elif..else..fi statement (Else If ladder)
+4. case statement
+
+In Bash, code blocks in selection control statements are delimited using specific keywords and symbols. 
+
+- The "if" statement is followed by a condition and the "then" keyword.
+- The "elif" statement is also followed by a condition and the "then" keyword.
+- The "else" keyword is used to indicate an alternative code block that is executed if the condition is false.
+- The "fi" keyword marks the end of the entire statement.
+
+### Conditional Statements Example
+```
+for ((x=1;x<=100;x++)); do
+    if ((x % 5 == 0)) && ((x % 3 == 0)); then
+        echo FizzBuzz
+    elif ((x % 3 == 0)); then
+        echo Fizz
+    elif ((x % 5 == 0)); then
+        echo Buzz
+    else
+        echo $x
+    fi;
+done
+```
+
+### if statement
+The statement will be executed if the specified condition is true
+```
+if [ expression ]
+then
+  statement
+fi
+```
+
+### if-else statement
+If the specified condition is not true in if part then the else statement will be executed.
+```
+if [ expression ]
+then
+  statement1
+else
+  statement2
+fi
+```
+
+### if..elif..else..fi statement (Else If ladder)
+To use multiple conditions in one if-else block, then elif keyword is used in bash. If expression1 is true then it executes statement 1.1, and this process continues. If none of the conditions are true then it processes the else statement (statment3).
+```
+if [ expression1 ]
+then
+  statement1.1
+elif [ expression2 ]
+then
+  statement2.1
+else
+   statement3
+fi
+```
+
+### case statement
+Case statements allow you to perform conditional branching based on the value of a variable or expression, similar to a switch statement. When a match is found all of the associated statements until the double semicolon (;;) is executed. The "esac" keyword marks the end of the case statement.
+```
+case  in
+   Pattern 1) Statement 1;;
+   Pattern n) Statement n;;
+esac
+```
+
+## Short Circuit Evaluation
+
+Logical AND (&&)
+```
+if [ expression1 ] && [ expression2 ]
+then
+  statement
+fi
+```
+
+Logical OR (||)
+```
+if [ expression1 ] || [ expression2 ]
+then
+  statement
+fi
 ```
