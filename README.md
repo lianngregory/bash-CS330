@@ -23,7 +23,40 @@ If you're using a UNIX based machine, Bash will most likely be preinstalled and 
 Install Linux on Windows with WSL [here](https://learn.microsoft.com/en-us/windows/wsl/install) 
 
 ### Bash Use Cases
-It is important to note that Bash is a *Shell Scripting Language*, which means that 
+It is important to note that Bash is a *Shell Scripting Language* primarily used in UNIX-based operating systems. Bash can be a powerful tool for doing things like:
+- [File and Directory Manipulation](https://github.com/lianngregory/bash-CS330/blob/main/code%20examples/usecase-file.sh)
+  ```shell
+  #!/bin/bash
+
+  # make a new directory
+  mkdir newDirectory
+
+  # create a new file and add text to it
+  echo "This is a new File!" > newDirectory/newFile.txt
+
+  # change directory permissions
+  chmod 666 newDirectory
+
+  # see the contents of the new directory
+  ls -l newDirectory
+  ```
+- [System Monitoring](https://github.com/lianngregory/bash-CS330/blob/main/code%20examples/usecase-monitoring.sh)
+  ```shell
+  #!/bin/bash
+
+  # check operating system type
+  echo $OSTYPE
+  ```
+- [Text Processing](https://github.com/lianngregory/bash-CS330/blob/main/code%20examples/usecase-text.sh)
+  ```shell
+  #!/bin/bash
+
+  # count file types in user's current directory
+  find "$PWD" -type f | awk -F'.' '{print $NF}' | sort | uniq -c | sort -nr | \
+    while read -r count fileType; do
+      echo "Files of type $fileType: $count"
+    done
+  ```
 
 ### "Hello World" program
 You can write Bash scripts in any text editor you want. To utilize a text editor I am familiar with, I plan to use [Visual Studio Code](https://code.visualstudio.com/). 
