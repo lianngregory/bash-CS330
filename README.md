@@ -22,29 +22,33 @@ If you're using a UNIX based machine, Bash will most likely be preinstalled and 
 #### Windows
 Install Linux on Windows with WSL [here](https://learn.microsoft.com/en-us/windows/wsl/install) 
 
+### Bash Use Cases
+It is important to note that Bash is a *Shell Scripting Language*, which means that 
+
 ### "Hello World" program
 You can write Bash scripts in any text editor you want. To utilize a text editor I am familiar with, I plan to use [Visual Studio Code](https://code.visualstudio.com/). 
 1. Create a new file using a text editor like vi/vim or nano
-```
+```shell
 nano hello.sh
 ```
 2. Type in the code below
-```
+```shell
 #!/bin/bash
 echo "Hello World!"
 ```
 3. Run or execute the script
-```
+```shell
 ./hello.sh
 ```
 4. Expected output:
-```
+```shell
 Hello World!
 ```
+hello world example [source code](https://github.com/lianngregory/bash-CS330/blob/main/code%20examples/hello.sh)
 
 ### Writing comments in Bash scripts
 To write comments in Bash scripts, use a "#" at the beginning of your comment. 
-```
+```shell
 #!/bin/bash
 
 # this is a comment!
@@ -68,7 +72,7 @@ echo "Hello World!"
 - Variable names cannot be reserved words
 
 Reserved Words
-```
+```shell
 if
 elif
 else
@@ -89,7 +93,7 @@ function
 
 Recommended naming conventions are lower-case alphanumeric characters, numbers, and underscores
 
-```
+```shell
 my_variable="test"         # declare variable
 echo $my_variable          # display value
 unset my_variable          # delete variable
@@ -99,7 +103,7 @@ unset my_variable          # delete variable
 
 Recommended naming conventions are all capital alphanumeric characters, numbers, and underscores, declared at the top of the file. 
 
-```
+```shell
 export MY_ENVIORMENT_VARIABLE="This is an enviorment variable!"
 ```
 
@@ -117,9 +121,9 @@ Bash has no data types, which would make it an "untyped" language. This means th
 
 ## Operators
 Arithmetic Operators:
-- + (Addition)
-- - (Subtraction)
-- * (Multiplication)
+- \+ (Addition)
+- \- (Subtraction)
+- \* (Multiplication)
 - / (Division)
 - % (Modulo)
 
@@ -159,18 +163,19 @@ Compound Assignment Operators:
 
 In bash we are free to do any arithmetical operations. But the expression must enclosed by `$(( ))`
 
-```
+```shell
 echo $(( 10 + 2 )) # 12
 ```
 
 In arithmetic expansions, variables should generally be used without a $ prefix:
 
-```
+```shell
 x=5
 y=10
 result=$(( x + y))
 echo $result # 10
 ```
+arithmetic example [source code](https://github.com/lianngregory/bash-CS330/blob/main/code%20examples/arithmetic.sh)
 
 ## Arrays
 
@@ -180,7 +185,7 @@ When dealing with arrays, we should be aware of the special environment variable
 
 You can create an array by assigning a value to an index in the array variable
 
-```
+```shell
 dogs[0]=pitbull
 dogs[1]=poodle
 dogs[2]=huskie
@@ -188,13 +193,13 @@ dogs[2]=huskie
 
 Array variables can also be created using compound assignments
 
-```
+```shell
 dogs=(pitbull poodle huskie)
 ```
 
 ### Using Arrays in Bash
 
-```
+```shell
 echo "${dogs[0]}"           # Element #0
 echo "${dogs[-1]}"          # Last element
 echo "${dogs[@]}"           # All elements, space-separated
@@ -207,7 +212,7 @@ echo "${!dogs[@]}"          # Keys of all elements, space-separated
 
 ### Array Operations
 
-```
+```shell
 dogs=("${dogs[@]}" "goldendoodle")    # Push
 dogs+=('goldendoodle')                # Also Push
 unset dogs[2]                         # Remove one item
@@ -215,7 +220,7 @@ unset dogs[2]                         # Remove one item
 
 ### Iterating Arrays
 
-```
+```shell
 for d in "${dogs[@]}"; do   # loop over items in "dogs" array
   echo "$d"
 done
@@ -226,7 +231,7 @@ done
 
 Dictionaries, also known as hash tables and hash maps, defines an unordered collection of data as a set of key-value pair.
 
-```
+```shell
 declare -A fruits
 
 fruits[apple]="red"
@@ -237,7 +242,7 @@ fruits[blueberry]="blue"
 
 ### Using Dictionaries in Bash
 
-```
+```shell
 echo "${fruits[apple]}" # display value for key "apple"
 echo "${fruits[@]}"     # All values
 echo "${!fruits[@]}"    # All keys
@@ -248,14 +253,14 @@ unset fruits[apple]     # Delete key "apple"
 ### Iterating Dictionaries
 
 Loop over values
-```
+```shell
 for value in "${fruits[@]}"; do  # loop over values in "fruits"
   echo "$value"
 done
 ```
 
 Loop over keys
-```
+```shell
 for key in "${!fruits[@]}"; do  # loop over keys in "fruits"
   echo "$key"
 done
@@ -269,7 +274,7 @@ In Bash, functions are a chunk of code that can be called numerous times. The pu
 You can define functions in two ways.
 
 The first way starts with the function name, followed by parentheses. This is the more commonly found format.
-```
+```shell
 function_name () {
   code
 }
@@ -278,7 +283,7 @@ function_name     # call the function
 ```
 
 The second way starts with the reserved word function, followed by the function name.
-```
+```shell
 function function_name {
   code
 }
@@ -291,7 +296,7 @@ function_name     # call the function
 **Local Variables:** Local variables declared within a Bash function are also stored on the stack. Bash allocates stack space for these variables when the function is called and deallocates it when the function returns. The values of local variables are stored directly on the stack, and their memory is automatically released when the function exits.
 
 ### Function Example: Pass-by Reference
-```
+```shell
 #!/bin/bash
 
 swap () {
@@ -311,9 +316,10 @@ swap
 echo "The value of x after swapping: $x"
 echo "The value of y after swapping: $y"
 ```
+pass-by reference example [source code](https://github.com/lianngregory/bash-CS330/blob/main/code%20examples/functions-passby.sh)
 
 ### Function Example: Multiplying Two Numbers
-```
+```shell
 #!/bin/bash
 
 multiply () {
@@ -324,9 +330,10 @@ multiply () {
 result=$(multiply 2 5)         # call function nd store result in variable
 echo "The sum is: $result"     # print result
 ```
+multiply 2 numbers example [source code](https://github.com/lianngregory/bash-CS330/blob/main/code%20examples/functions-multiply.sh)
 
 ### Function Example: Recursion
-```
+```shell
 #!/bin/bash
 
 factorial () {
@@ -340,9 +347,10 @@ factorial () {
 
 factorial 5    # expected output: 120
 ```
+recursion example [source code](https://github.com/lianngregory/bash-CS330/blob/main/code%20examples/functions-recursion.sh)
 
 ### Function Example: Split a String
-```
+```shell
 #!/bin/bash
 
 split_string () {
@@ -360,6 +368,7 @@ split_string () {
 input="Hello World"
 split_string "$input"       # expected output: Hello\nWorld
 ```
+classes and inheritance example [source code](https://github.com/lianngregory/bash-CS330/blob/main/code%20examples/functions-splitstring.sh)
 
 ## Booleans
 
@@ -381,7 +390,7 @@ In Bash, code blocks in selection control statements are delimited using specifi
 - The "fi" keyword marks the end of the entire statement.
 
 ### Conditional Statements Example
-```
+```shell
 for ((x=1;x<=100;x++)); do
     if ((x % 5 == 0)) && ((x % 3 == 0)); then
         echo FizzBuzz
@@ -394,10 +403,11 @@ for ((x=1;x<=100;x++)); do
     fi;
 done
 ```
+conditional statements example [source code](https://github.com/lianngregory/bash-CS330/blob/main/code%20examples/fizzBuzz.sh)
 
 ### if statement
 The statement will be executed if the specified condition is true
-```
+```shell
 if [ expression ]
 then
   statement
@@ -406,7 +416,7 @@ fi
 
 ### if-else statement
 If the specified condition is not true in if part then the else statement will be executed.
-```
+```shell
 if [ expression ]
 then
   statement1
@@ -417,7 +427,7 @@ fi
 
 ### if..elif..else..fi statement (Else If ladder)
 To use multiple conditions in one if-else block, then elif keyword is used in bash. If expression1 is true then it executes statement 1.1, and this process continues. If none of the conditions are true then it processes the else statement (statment3).
-```
+```shell
 if [ expression1 ]
 then
   statement1.1
@@ -431,7 +441,7 @@ fi
 
 ### case statement
 Case statements allow you to perform conditional branching based on the value of a variable or expression, similar to a switch statement. When a match is found all of the associated statements until the double semicolon (;;) is executed. The "esac" keyword marks the end of the case statement.
-```
+```shell
 case  in
    Pattern 1) Statement 1;;
    Pattern n) Statement n;;
@@ -441,7 +451,7 @@ esac
 ## Short Circuit Evaluation
 
 Logical AND (&&)
-```
+```shell
 if [ expression1 ] && [ expression2 ]
 then
   statement
@@ -449,7 +459,7 @@ fi
 ```
 
 Logical OR (||)
-```
+```shell
 if [ expression1 ] || [ expression2 ]
 then
   statement
@@ -462,7 +472,7 @@ Bash is primarily a scripting language and by-result is not designed with object
 
 However, you can simulate some of the features of objects, structs, or records in Bash using associative arrays, also known as dictionaries.
 
-```
+```shell
 #!/bin/bash
 
 # Define a dictionary (associative array) as a "person" object
@@ -481,3 +491,5 @@ function display_person() {
 # Call the "display_person" function
 display_person
 ```
+
+classes and inheritance example [source code](https://github.com/lianngregory/bash-CS330/blob/main/code%20examples/classes-inheritance.sh)
